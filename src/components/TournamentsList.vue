@@ -3,26 +3,40 @@
     <table class="table center" v-if="tournaments.length !== 0">
       <thead>
         <tr>
-          <th>Navn:</th>
-          <th>Dato:</th>
-          <th>Sted:</th>
-          <th>Organisør:</th>
-          <th>Arbitør:</th>
-          <th>Antall spillere:</th>
+          <th class="has-text-centered">Turnering:</th>
+          <th class="has-text-centered">Dato:</th>
+          <th class="has-text-centered">Sted:</th>
+          <th class="has-text-centered">Organisør:</th>
+          <th class="has-text-centered">Arbitør:</th>
+          <th class="has-text-centered">Spillere:</th>
+          <th class="has-text-centered">ID:</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="tournament in tournaments" :key="tournament.id">
-          <td>
-            <a href="https://en.wikipedia.org/wiki/Leicester_City_F.C.">{{
-              tournament.name
-            }}</a>
+          <td class="has-text-centered">
+            <router-link
+              :to="{
+                path: '/tournament',
+                query: {
+                  name: tournament.name,
+                  description: tournament.description,
+                  place: tournament.place,
+                  date: tournament.date,
+                  organizer: tournament.organizer,
+                  arbitor: tournament.arbitor,
+                },
+              }"
+            >
+              {{ tournament.name }}
+            </router-link>
           </td>
-          <th>{{ tournament.date }}</th>
-          <td>{{ tournament.place }}</td>
-          <td>{{ tournament.organizer }}</td>
-          <td>{{ tournament.arbitor }}</td>
-          <td>{{ tournament.playerCount }}</td>
+          <th class="has-text-centered">{{ tournament.date }}</th>
+          <td class="has-text-centered">{{ tournament.place }}</td>
+          <td class="has-text-centered">{{ tournament.organizer }}</td>
+          <td class="has-text-centered">{{ tournament.arbitor }}</td>
+          <td class="has-text-centered">{{ tournament.playerCount}}</td>
+          <td class="has-text-centered">{{ tournament._id }}</td>
         </tr>
       </tbody>
     </table>
@@ -48,7 +62,6 @@ export default {
         console.log(json);
       }
     }
-
     getTournaments();
 
     return {
@@ -64,7 +77,7 @@ table.center {
   margin-right: auto;
 }
 
-h1{
+h1 {
   font-size: 2rem;
   text-align: center;
 }

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="container mt-5">
-      <router-view />
-      <!-- <transition name="fade">
-      </transition> -->
+    <div class="ml-6 mt-5">
+      <transition name="fade" mode="out-in" @beforeLeave="beforeLeave" @enter="enter">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
@@ -15,16 +15,43 @@ export default {
   components: {
     Navbar,
   },
+  data() {
+    return {
+      prevHeight: 0,
+    };
+  },
+  /* eslint-disable */
+  methods: {
+    beforeLeave(element) {
+      this.prevHeight = getComputedStyle(element).height;
+    },
+    enter(element) {
+      const { height } = getComputedStyle(element);
+
+      element.style.height = this.prevHeight;
+
+      setTimeout(() => {
+        element.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      element.style.height = 'auto';
+    },
+  },
+  /* eslint-enable */
 };
 </script>
-<style>
+<style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s;
+  transition-duration: 0.5s;
+  transition-property: height, opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
 }
 
 .fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.fade-leave-active {
+  opacity: 0
 }
 </style>

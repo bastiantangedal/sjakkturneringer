@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="createTournament">
     <div class="field" aria-autocomplete="false">
-      <label class="label">Navn på turnering:</label>
+      <label class="label">Turneringsnavn:</label>
       <div class="control">
         <input
           v-model="tournamentName"
@@ -21,7 +21,7 @@
           type="text"
           v-model="description"
           rows="5"
-          placeholder="f.eks. Kragerø Sjakklubb ønsker alle hjertelig velkommen til Kragerø Grand Prix 2020."
+          placeholder="Skriv alt som har med turneringen å gjøre. F.eks. info om: overnatting, spillesystem, betenkningstid osv."
           required
         />
       </div>
@@ -56,13 +56,13 @@
     </div>
 
     <div class="field" aria-autocomplete="false">
-      <label class="label">Startkontigent:</label>
-      <div class="control">
+      <label class="label">Startavgift eller prisinformasjon:</label>
+      <div class="control ">
         <input v-model="price" class="input" type="text" placeholder="La stå tom for gratis" />
       </div>
     </div>
 
-    <button type="submit" class="button is-success">Success</button>
+    <button type="submit" class="button is-success">Opprett turnering</button>
   </form>
 </template>
 
