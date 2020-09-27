@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="container mt-3">
-      <transition name="fade">
-        <router-view />
-      </transition>
+    <div class="container mt-5">
+      <router-view />
+      <!-- <transition name="fade">
+      </transition> -->
     </div>
   </div>
 </template>
