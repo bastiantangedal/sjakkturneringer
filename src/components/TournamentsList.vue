@@ -17,14 +17,14 @@
           <td class="has-text-centered">
             <router-link
               :to="{
-                path: '/tournament',
+                name: 'tournament',
                 query: {
-                  name: tournament.name,
-                  description: tournament.description,
-                  place: tournament.place,
-                  date: tournament.date,
-                  organizer: tournament.organizer,
-                  arbitor: tournament.arbitor,
+                  id: tournament._id,
+                  //description: tournament.description,
+                  //place: tournament.place,
+                  //date: tournament.date,
+                  //organizer: tournament.organizer,
+                  //arbitor: tournament.arbitor,
                 },
               }"
             >

@@ -20,16 +20,12 @@ const routes = [
     component: CreateTournament,
   },
   {
+    name: 'tournament',
     path: '/tournament',
     component: Tournament,
     props(route) {
       return {
-        name: route.query.name, 
-        description: route.query.description, 
-        place: route.query.place, 
-        date: route.query.date, 
-        organizer: route.query.organizer, 
-        arbitor: route.query.arbitor,
+        id: route.query.id,
       };
     },
   },

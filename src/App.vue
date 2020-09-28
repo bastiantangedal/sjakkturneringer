@@ -3,7 +3,7 @@
     <Navbar />
     <div class="ml-6 mt-5">
       <transition name="fade" mode="out-in" @beforeLeave="beforeLeave" @enter="enter">
-        <router-view />
+        <router-view/>
       </transition>
     </div>
   </div>
