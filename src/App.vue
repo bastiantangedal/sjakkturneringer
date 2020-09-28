@@ -47,7 +47,7 @@ export default {
   transition-duration: 0.5s;
   transition-property: height, opacity;
   transition-timing-function: ease;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .fade-enter,
