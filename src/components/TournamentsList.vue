@@ -8,7 +8,7 @@
           <th class="has-text-centered">Sted:</th>
           <th class="has-text-centered">Organisør:</th>
           <th class="has-text-centered">Arbitør:</th>
-          <th class="has-text-centered">Spillere:</th>
+          <th class="has-text-centered">Antall spillere:</th>
           <th class="has-text-centered">ID:</th>
         </tr>
       </thead>
@@ -30,7 +30,7 @@
           <td class="has-text-centered">{{ tournament.place }}</td>
           <td class="has-text-centered">{{ tournament.organizer }}</td>
           <td class="has-text-centered">{{ tournament.arbiter }}</td>
-          <td class="has-text-centered">{{ tournament.playerCount}}</td>
+          <td class="has-text-centered">{{ hasPlayerArrayAndProperties(tournament) ? tournament.players.length : '0' }}</td>
           <td class="has-text-centered">{{ tournament._id }}</td>
         </tr>
       </tbody>
@@ -49,11 +49,30 @@ export default {
     const API_URL = 'http://localhost:5000/api/v1/tournaments';
     const tournaments = ref([]);
 
+    function isArrayEmpty(array) {
+      return array.filter((el) => !Object.keys(el).length !== 0);
+    }
+
+    function hasPlayerArrayAndProperties(tournament) {
+      const x = JSON.parse(JSON.stringify(tournament));
+      console.log(x);
+
+      // Check if tournament has "player" JSON array
+      if (Object.prototype.hasOwnProperty.call(x, 'players')) {
+        console.log(`Player count: ${x.players.length}`);
+        if (isArrayEmpty(x.players) !== 0) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     async function getTournaments() {
       const response = await fetch(API_URL);
       const json = await response.json();
       if (json.length !== 0) {
         tournaments.value = json;
+
         console.log(json);
       }
     }
@@ -61,6 +80,7 @@ export default {
 
     return {
       tournaments,
+      hasPlayerArrayAndProperties,
       getTournaments,
     };
   },
