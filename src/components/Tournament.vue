@@ -1,15 +1,19 @@
 /* eslint no-trailing-spaces: 1 */
 // trailing space _
 <template>
-  <div>
+  <div class="pt-4">
     <h1 class="title is-spaced">{{ tournament.name }}</h1>
     <h2 class="subtitle">{{ tournament.description }}</h2>
-    <h4 class="subtitle is-6">Sted: {{ tournament.place }}</h4>
+    <h4 class="subtitle is-6"><strong>Dato: {{ tournament.date }}</strong></h4>
+    <h4 class="subtitle is-6"><strong>Sted: {{ tournament.place }}</strong></h4>
     <h4 class="subtitle is-6">Organisør: {{ tournament.organizer }}</h4>
-    <h4 class="subtitle is-6">Dato: {{ tournament.date }}</h4>
-    <h4 class="subtitle is-6">Arbitør: {{ tournament.arbitor }}</h4>
+    <h4 class="subtitle is-6">Arbitør: {{ tournament.arbiter }}</h4>
+    <h4 class="subtitle is-6">Betenkningstid: {{ tournament.time }}</h4>
+    <h4 class="subtitle is-6">Startkontigent: {{ tournament.price }}</h4>
+    <h4 class="subtitle is-6">Gruppeinndeling: {{ tournament.group }}</h4>
+    <h4 class="subtitle is-6">{{ tournament.players }}</h4>
     <div>
-      <div class="field is-grouped">
+      <div class="field is-grouped pt-2">
         <p class="control">
           <button class="button is-dark is-rounded">Meld deg på</button>
         </p>
@@ -27,12 +31,6 @@ import { ref } from '@vue/composition-api';
 export default {
   props: {
     id: String,
-    name: String,
-    description: String,
-    place: String,
-    date: String,
-    organizer: String,
-    arbitor: String,
   },
 
   setup(props) {

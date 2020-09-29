@@ -20,11 +20,6 @@
                 name: 'tournament',
                 query: {
                   id: tournament._id,
-                  //description: tournament.description,
-                  //place: tournament.place,
-                  //date: tournament.date,
-                  //organizer: tournament.organizer,
-                  //arbitor: tournament.arbitor,
                 },
               }"
             >
@@ -34,7 +29,7 @@
           <th class="has-text-centered">{{ tournament.date }}</th>
           <td class="has-text-centered">{{ tournament.place }}</td>
           <td class="has-text-centered">{{ tournament.organizer }}</td>
-          <td class="has-text-centered">{{ tournament.arbitor }}</td>
+          <td class="has-text-centered">{{ tournament.arbiter }}</td>
           <td class="has-text-centered">{{ tournament.playerCount}}</td>
           <td class="has-text-centered">{{ tournament._id }}</td>
         </tr>

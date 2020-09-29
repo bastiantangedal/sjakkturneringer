@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="ml-6 mt-5">
+    <div class="container mt-3">
       <transition name="fade" mode="out-in" @beforeLeave="beforeLeave" @enter="enter">
-        <router-view/>
+        <router-view :key="$route.path"/>
       </transition>
     </div>
   </div>
@@ -44,10 +44,10 @@ export default {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
   transition-property: height, opacity;
   transition-timing-function: ease;
-  /*overflow: hidden;*/
+  /*overflow: hidden*/;
 }
 
 .fade-enter,

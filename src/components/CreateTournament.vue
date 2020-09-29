@@ -6,22 +6,21 @@
         <input
           v-model="tournamentName"
           class="input"
+          size="15"
           type="text"
-          placeholder="f.eks. Kragerø Grand Prix 2020"
           required
         />
       </div>
     </div>
 
     <div class="field" aria-autocomplete="false">
-      <label class="label">Beskrivelse:</label>
+      <label class="label">Informasjon:</label>
       <div class="control">
         <textarea
           class="textarea"
           type="text"
           v-model="description"
-          rows="5"
-          placeholder="Skriv alt som har med turneringen å gjøre. F.eks. info om: overnatting, spillesystem, betenkningstid osv."
+          rows="4"
           required
         />
       </div>
@@ -30,35 +29,49 @@
     <div class="field" aria-autocomplete="false">
       <label class="label">Organisør (sjakklubb):</label>
       <div class="control">
-        <input v-model="organizer" class="input" type="text" placeholder="F.eks Kragerø Sjakklubb" required/>
+        <input v-model="organizer" class="input" type="text" required />
+      </div>
+    </div>
+
+    <div class="field" aria-autoc omplete="false">
+      <label class="label">Betenkningstid</label>
+      <div class="control">
+        <input v-model="time" class="input" type="text" required />
       </div>
     </div>
 
     <div class="field" aria-autocomplete="false">
       <label class="label">Sted:</label>
       <div class="control">
-        <input v-model="place" class="input" type="text" placeholder="F.eks. Kragerø Resort" required/>
+        <input v-model="place" class="input" type="text" required />
+      </div>
+    </div>
+
+    <div class="field" aria-autocomplete="false">
+      <label class="label">Gruppeinndeling:</label>
+      <div class="control">
+        <input v-model="group" class="input" type="text" required />
       </div>
     </div>
 
     <div class="field" aria-autocomplete="false">
       <label class="label">Dato:</label>
       <div class="control">
-        <input v-model="date" class="input" type="text" placeholder="F.eks 14-17 desember 2020" required/>
+        <input v-model="date" class="input" type="text" required />
       </div>
     </div>
 
     <div class="field" aria-autocomplete="false">
       <label class="label">Arbitør (fullt navn):</label>
       <div class="control">
-        <input v-model="arbitor" class="input" type="text" placeholder="F.eks Hans Olav Lahlum" required/>
+        <input v-model="arbiter" class="input" type="text" required />
       </div>
     </div>
 
     <div class="field" aria-autocomplete="false">
       <label class="label">Startavgift eller prisinformasjon:</label>
-      <div class="control ">
-        <input v-model="price" class="input" type="text" placeholder="La stå tom for gratis" />
+      <div class="control">
+        <input v-model="price" class="input" type="text" />
       </div>
     </div>
 
@@ -79,8 +92,10 @@ export default {
     const price = ref('');
     const date = ref('');
     const place = ref('');
+    const group = ref('');
     const organizer = ref('');
-    const arbitor = ref('');
+    const time = ref('');
+    const arbiter = ref('');
 
     async function createTournament() {
       const response = await fetch(API_URL, {
@@ -92,9 +107,11 @@ export default {
           name: tournamentName.value,
           description: description.value,
           place: place.value,
+          group: group.value,
           date: date.value,
           organizer: organizer.value,
-          arbitor: arbitor.value,
+          time: time.value,
+          arbiter: arbiter.value,
           price: price.value,
         }),
       });
@@ -108,9 +125,11 @@ export default {
       tournamentName,
       description,
       place,
+      group,
       date,
       organizer,
-      arbitor,
+      time,
+      arbiter,
       price,
       createTournament,
     };
