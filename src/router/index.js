@@ -7,6 +7,7 @@ import TournamentsList from '@/components/TournamentsList.vue';
 import CreateTournament from '@/components/CreateTournament.vue';
 import Tournament from '@/components/Tournament.vue';
 import TournamentPlayers from '@/components/TournamentPlayers.vue';
+import CreateUser from '@/components/CreateUser.vue';
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
         id: route.query.id,
       };
     },
+  },
+  {
+    name: 'createUser',
+    path: '/createUser',
+    component: CreateUser,
   },
 ];
 

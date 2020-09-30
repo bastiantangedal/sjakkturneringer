@@ -1,19 +1,17 @@
 <template>
   <div>
-    <table class="table center">
+    <table class="table center table is-fullwidth">
       <thead>
         <tr>
           <th class="has-text-centered">Navn:</th>
           <th class="has-text-centered">Klubb:</th>
-          <th class="has-text-centered">FIDE:</th>
+          <th class="has-text-centered">FIDE-rating:</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="player in tournament.players" :key="player.name">
-          <td class="has-text-centered">
-            <th class="has-text-centered has-text-weight-normal">{{ player }}</th>
-          </td>
-          <th class="has-text-centered">{{ player.playerClub }}</th>
+          <td class="has-text-centered">{{ player }}</td>
+          <td class="has-text-centered">{{ player.playerClub }}</td>
           <td class="has-text-centered">{{ player.playerRating }}</td>
         </tr>
       </tbody>
