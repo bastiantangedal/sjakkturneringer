@@ -50,17 +50,20 @@ export default {
     const tournaments = ref([]);
 
     function isArrayEmpty(array) {
-      return array.filter((el) => !Object.keys(el).length !== 0);
+      if (array.length === 0) {
+        return true;
+      }
+
+      return false;
     }
 
     function hasPlayerArrayAndProperties(tournament) {
       const x = JSON.parse(JSON.stringify(tournament));
       console.log(x);
 
-      // Check if tournament has "player" JSON array
       if (Object.prototype.hasOwnProperty.call(x, 'players')) {
         console.log(`Player count: ${x.players.length}`);
-        if (isArrayEmpty(x.players) !== 0) {
+        if (!isArrayEmpty(x.players)) {
           return true;
         }
       }

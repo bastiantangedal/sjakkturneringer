@@ -46,24 +46,25 @@ export default {
   setup(props) {
     const API_URL = `http://localhost:5000/api/v1/tournaments/${props.id}`;
     const tournament = ref([]);
-    let hasPlayers = ref(false);
+    const hasPlayers = ref(false);
 
     function isArrayEmpty(array) {
-      return array.filter((el) => !Object.keys(el).length !== 0);
+      if (array.length === 0) {
+        return true;
+      }
+
+      return false;
     }
 
     function hasPlayerArrayAndProperties() {
       const x = JSON.parse(JSON.stringify(tournament.value));
 
-      // Check if tournament has "player" JSON array
       if (Object.prototype.hasOwnProperty.call(x, 'players')) {
         console.log(`Player count: ${x.players.length}`);
-        if (isArrayEmpty(x.players) !== 0) {
-          hasPlayers = true;
+        if (!isArrayEmpty(x.players)) {
+          hasPlayers.value = true;
         }
       }
-
-      console.log(hasPlayers);
     }
 
     async function getTournament() {
@@ -73,12 +74,11 @@ export default {
         tournament.value = json;
 
         console.log(tournament.value);
-        console.log(JSON.parse(JSON.stringify(tournament.value)));
+        hasPlayerArrayAndProperties();
       }
     }
 
     getTournament();
-    hasPlayerArrayAndProperties();
 
     return {
       tournament,
