@@ -30,7 +30,13 @@
           <td class="has-text-centered">{{ tournament.place }}</td>
           <td class="has-text-centered">{{ tournament.organizer }}</td>
           <td class="has-text-centered">{{ tournament.arbiter }}</td>
-          <td class="has-text-centered">{{ hasPlayerArrayAndProperties(tournament) ? tournament.players.length : '0' }}</td>
+          <td class="has-text-centered">
+            {{
+              hasPlayerArray(tournament)
+                ? tournament.players.length
+                : '0'
+            }}
+          </td>
           <td class="has-text-centered">{{ tournament._id }}</td>
         </tr>
       </tbody>
@@ -57,7 +63,7 @@ export default {
       return false;
     }
 
-    function hasPlayerArrayAndProperties(tournament) {
+    function hasPlayerArray(tournament) {
       const x = JSON.parse(JSON.stringify(tournament));
       console.log(x);
 
@@ -70,7 +76,7 @@ export default {
       return false;
     }
 
-    async function getTournaments() {
+    async function getAllTournaments() {
       const response = await fetch(API_URL);
       const json = await response.json();
       if (json.length !== 0) {
@@ -79,12 +85,12 @@ export default {
         console.log(json);
       }
     }
-    getTournaments();
+    getAllTournaments();
 
     return {
       tournaments,
-      hasPlayerArrayAndProperties,
-      getTournaments,
+      hasPlayerArray,
+      getAllTournaments,
     };
   },
 };

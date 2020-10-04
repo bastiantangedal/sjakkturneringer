@@ -56,7 +56,7 @@ export default {
       return false;
     }
 
-    function hasPlayerArrayAndProperties() {
+    function hasPlayerArray() {
       const x = JSON.parse(JSON.stringify(tournament.value));
 
       if (Object.prototype.hasOwnProperty.call(x, 'players')) {
@@ -67,24 +67,24 @@ export default {
       }
     }
 
-    async function getTournament() {
+    async function getSpecificTournament() {
       const response = await fetch(API_URL);
       const json = await response.json();
       if (json.length !== 0) {
         tournament.value = json;
 
         console.log(tournament.value);
-        hasPlayerArrayAndProperties();
+        hasPlayerArray();
       }
     }
 
-    getTournament();
+    getSpecificTournament();
 
     return {
       tournament,
-      hasPlayerArrayAndProperties,
+      hasPlayerArray,
       isArrayEmpty,
-      getTournament,
+      getSpecificTournament,
       hasPlayers,
     };
   },
