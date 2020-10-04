@@ -20,7 +20,7 @@
         <p class="control">
           <button class="button is-dark is-rounded">Meld deg på</button>
         </p>
-        <p v-if="hasPlayers" class="control">
+        <p v-if="hasPlayerArray()" class="control">
           <button
             class="button is-dark is-rounded"
             @click="
@@ -46,7 +46,6 @@ export default {
   setup(props) {
     const API_URL = `http://localhost:5000/api/v1/tournaments/${props.id}`;
     const tournament = ref([]);
-    const hasPlayers = ref(false);
 
     function isArrayEmpty(array) {
       if (array.length === 0) {
@@ -62,9 +61,11 @@ export default {
       if (Object.prototype.hasOwnProperty.call(x, 'players')) {
         console.log(`Player count: ${x.players.length}`);
         if (!isArrayEmpty(x.players)) {
-          hasPlayers.value = true;
+          return true;
         }
       }
+
+      return false;
     }
 
     async function getSpecificTournament() {
@@ -85,7 +86,6 @@ export default {
       hasPlayerArray,
       isArrayEmpty,
       getSpecificTournament,
-      hasPlayers,
     };
   },
 };
