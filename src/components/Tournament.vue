@@ -20,7 +20,7 @@
         <p class="control">
           <button class="button is-dark is-rounded">Meld deg på</button>
         </p>
-        <p v-if="hasPlayerArray()" class="control">
+        <p v-if="hasPlayers()" class="control">
           <button
             class="button is-dark is-rounded"
             @click="
@@ -55,7 +55,7 @@ export default {
       return false;
     }
 
-    function hasPlayerArray() {
+    function hasPlayers() {
       const x = JSON.parse(JSON.stringify(tournament.value));
 
       if (Object.prototype.hasOwnProperty.call(x, 'players')) {
@@ -75,7 +75,7 @@ export default {
         tournament.value = json;
 
         console.log(tournament.value);
-        hasPlayerArray();
+        hasPlayers();
       }
     }
 
@@ -83,7 +83,7 @@ export default {
 
     return {
       tournament,
-      hasPlayerArray,
+      hasPlayers,
       isArrayEmpty,
       getSpecificTournament,
     };

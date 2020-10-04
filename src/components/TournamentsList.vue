@@ -32,7 +32,7 @@
           <td class="has-text-centered">{{ tournament.arbiter }}</td>
           <td class="has-text-centered">
             {{
-              hasPlayerArray(tournament)
+              hasPlayers(tournament)
                 ? tournament.players.length
                 : '0'
             }}
@@ -63,7 +63,7 @@ export default {
       return false;
     }
 
-    function hasPlayerArray(tournament) {
+    function hasPlayers(tournament) {
       const x = JSON.parse(JSON.stringify(tournament));
       console.log(x);
 
@@ -89,7 +89,7 @@ export default {
 
     return {
       tournaments,
-      hasPlayerArray,
+      hasPlayers,
       getAllTournaments,
     };
   },
