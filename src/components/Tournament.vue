@@ -68,7 +68,7 @@ export default {
       return false;
     }
 
-    async function getSpecificTournament() {
+    async function getTournamentById() {
       const response = await fetch(API_URL);
       const json = await response.json();
       if (json.length !== 0) {
@@ -79,13 +79,13 @@ export default {
       }
     }
 
-    getSpecificTournament();
+    getTournamentById();
 
     return {
       tournament,
       hasPlayers,
       isArrayEmpty,
-      getSpecificTournament,
+      getTournamentById,
     };
   },
 };
