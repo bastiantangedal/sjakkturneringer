@@ -20,7 +20,7 @@
         <a class="navbar-item" href="https://chess.com">
           <img src="@/assets/chess.png" alt="chess.com" />
         </a> -->
-        <a class="navbar-item" v-on:click="createUser">Opprett bruker</a>
+        <a class="navbar-item" v-on:click="logIn">Logg inn</a>
       </div>
     </div>
   </nav>
@@ -35,8 +35,8 @@ export default {
     createTournament() {
       this.$router.push('/createTournament');
     },
-    createUser() {
-      this.$router.push('/createUser');
+    logIn() {
+      this.$router.push('/login');
     },
   },
 };
