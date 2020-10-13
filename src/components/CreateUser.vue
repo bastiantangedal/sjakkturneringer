@@ -1,13 +1,12 @@
 <template>
   <div class="pt-6">
-<<<<<<< HEAD
     <form @submit.prevent="createUser">
       <div class="field">
         <label class="label">Navn:</label>
         <div class="control">
           <input v-model="name" class="input" type="text" />
         </div>
-=======
+      </div>
     <script
       type="application/javascript"
       defer
@@ -32,61 +31,27 @@
       <label class="label">Passord:</label>
       <div class="control">
         <input class="input" type="password" />
->>>>>>> 6177bed13d0cd856e17d58bbc092d47ced495d97
       </div>
-
-<<<<<<< HEAD
-      <div class="field">
-        <label class="label">Brukernavn</label>
-        <div class="control">
-          <input v-model="username" class="input" type="text" />
-        </div>
-=======
-    <!-- <div class="field">
-      <div class="control">
-        <label class="checkbox">
-          <input @change="checkFide($event)" type="checkbox" />
-          Jeg har en FIDE-tittel
-        </label>
->>>>>>> 6177bed13d0cd856e17d58bbc092d47ced495d97
-      </div>
-
-<<<<<<< HEAD
-      <div class="field">
-        <label class="label">Passord:</label>
-        <div class="control">
-          <input v-model="password" class="input" type="password" />
-        </div>
-=======
-    <div v-if="hasFideTitle" class="field">
-      <label class="label">Lenke til FIDE-profil:</label>
-      <div class="control">
-        <input @change="checkUrl" class="input" type="text" />
-      </div>
-    </div> -->
-
+    </div>
     <span v-if="hasFideTitle" class="tag is-success is-light">Success</span>
-
     <div class="field">
       <div class="control">
         <label class="checkbox">
           <input type="checkbox" />
           Jeg tillater at min informasjon blir lagret i en database
         </label>
->>>>>>> 6177bed13d0cd856e17d58bbc092d47ced495d97
       </div>
-
-<<<<<<< HEAD
       <div @submit.prevent="createUser" class="field is-grouped">
         <div class="control pt-3">
           <button class="button is-success">Opprett bruker</button>
         </div>
-=======
+      </div>
+    </div>
     <div class="field is-grouped">
       <div class="control pt-3">
         <button class="button is-success">Opprett bruker</button>
->>>>>>> 6177bed13d0cd856e17d58bbc092d47ced495d97
       </div>
+    </div>
     </form>
   </div>
 </template>
@@ -96,7 +61,6 @@ import { ref } from '@vue/composition-api';
 
 export default {
   setup() {
-<<<<<<< HEAD
     const name = ref('');
     const username = ref('');
     const password = ref('');
@@ -147,23 +111,6 @@ export default {
       username,
       password,
       createUser,
-=======
-    const hasFideTitle = ref(false);
-
-    function checkFide($event) {
-      const isChecked = $event.srcElement.checked;
-      hasFideTitle.value = isChecked;
-    }
-
-    function checkUrl($event) {
-      console.log($event.srcElement.className);
-    }
-
-    return {
-      checkFide,
-      hasFideTitle,
-      checkUrl,
->>>>>>> 6177bed13d0cd856e17d58bbc092d47ced495d97
     };
   },
 };
